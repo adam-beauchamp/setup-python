@@ -57,10 +57,7 @@ async function installPython(workingDirectory: string) {
       'DefaultAllUsersTargetDir=$PythonArchPath InstallAllUsers=1';
 
     const data = fs.readFileSync(ps1, 'utf8');
-    const result = data.replace(
-      /`(${installArgs})`/g,
-      '$1 Include_debug=1'
-    );
+    const result = data.replace(/`(${installArgs})`/g, '$1 Include_debug=1');
 
     fs.writeFileSync(ps1, result, 'utf8');
 
