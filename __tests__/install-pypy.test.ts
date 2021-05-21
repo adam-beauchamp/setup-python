@@ -165,16 +165,16 @@ describe('installPyPy', () => {
     spyFsWriteFile.mockImplementation(() => undefined);
 
     spyHttpClient = jest.spyOn(HttpClient.prototype, 'getJson');
-    spyHttpClient.mockImplementation(
-      async (): Promise<ifm.ITypedResponse<IPyPyManifestRelease[]>> => {
-        const result = JSON.stringify(manifestData);
-        return {
-          statusCode: 200,
-          headers: {},
-          result: JSON.parse(result) as IPyPyManifestRelease[]
-        };
-      }
-    );
+    spyHttpClient.mockImplementation(async (): Promise<
+      ifm.ITypedResponse<IPyPyManifestRelease[]>
+    > => {
+      const result = JSON.stringify(manifestData);
+      return {
+        statusCode: 200,
+        headers: {},
+        result: JSON.parse(result) as IPyPyManifestRelease[]
+      };
+    });
 
     spyExec = jest.spyOn(exec, 'exec');
     spyExec.mockImplementation(() => undefined);
